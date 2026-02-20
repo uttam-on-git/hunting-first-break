@@ -33,7 +33,7 @@ const ChatNote: React.FC = () => {
   };
 
   return (
-    <div className="sticky-note p-6 w-full max-w-xs mx-auto mb-10 transform -rotate-1 hover:rotate-0 transition-transform duration-300 sketch-border border-yellow-300">
+    <div className="sticky-note p-6 w-full max-w-sm lg:max-w-none mx-auto mb-10 transform -rotate-1 hover:rotate-0 transition-transform duration-300 sketch-border border-yellow-300">
       <div className="absolute -top-3 left-1/2 -translate-x-1/2 tape-piece opacity-60 rotate-2"></div>
       <h4 className="font-handwriting-header text-xl font-bold mb-2">Quick Note:</h4>
       <p className="text-sm italic mb-4 min-h-[60px] text-gray-700 leading-tight">"{response}"</p>

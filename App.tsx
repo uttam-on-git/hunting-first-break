@@ -59,15 +59,15 @@ const App: React.FC = () => {
       </div>
 
       {/* Main Container Wrapper for Sticky Interaction */}
-      <div className="w-full max-w-5xl flex flex-col md:flex-row gap-8 items-start justify-center">
+      <div className="w-full max-w-6xl flex flex-col md:flex-row gap-6 lg:gap-8 items-start justify-center">
         
         {/* Left Side: Sticky Note (Desktop) */}
-        <div className="hidden lg:block sticky top-10 w-64">
+        <div className="hidden lg:block sticky top-10 w-80 xl:w-96">
           <ChatNote />
         </div>
 
         {/* Central Paper Container */}
-        <main className="main-panel relative w-full max-w-5xl bg-white/95 backdrop-blur-md p-8 md:p-12 sketch-border paper-shadow z-10">
+        <main className="main-panel relative w-full max-w-4xl bg-white/95 backdrop-blur-md p-8 md:p-10 lg:p-11 sketch-border paper-shadow z-10">
           <div className="absolute top-0 left-0 w-full h-full paper-texture opacity-30 pointer-events-none rounded-[inherit]"></div>
           
           <div className="tape absolute -top-4 left-1/2 -translate-x-1/2 w-32 h-10 opacity-70" />

@@ -33,7 +33,7 @@ const ProjectCard: React.FC<Project & { rotate: string }> = ({
   codeUrl,
 }) => (
   <div
-    className={`project-card relative p-6 border bg-[var(--bg-card)] border-[var(--border)] shadow-sm hover:shadow-xl transition-all duration-500 ${rotate} hover:rotate-0 hover:scale-[1.04] group mb-8 transition-all duration-300`}
+    className={`project-card relative p-5 border bg-[var(--bg-card)] border-[var(--border)] shadow-sm hover:shadow-xl transition-all duration-500 ${rotate} hover:rotate-0 hover:scale-[1.03] group mb-7 transition-all duration-300`}
   >
     {/* Piece of tape on corner */}
     <div className="absolute -top-3 -right-2 tape-piece rotate-12 opacity-50 group-hover:opacity-100 transition-opacity"></div>
@@ -55,7 +55,7 @@ const ProjectCard: React.FC<Project & { rotate: string }> = ({
       )}
     </div>
 
-    <h3 className="project-title font-handwriting-header text-2xl font-bold mb-2 text-[var(--text-primary)] group-hover:text-blue-600 transition-colors transition-all duration-300">
+    <h3 className="project-title font-handwriting-header text-xl font-bold mb-2 text-[var(--text-primary)] group-hover:text-blue-600 transition-colors transition-all duration-300">
       {title}
     </h3>
     <p className="project-desc text-sm mb-4 leading-relaxed font-sans text-[var(--text-secondary)] transition-all duration-300">
@@ -193,7 +193,7 @@ const Projects: React.FC = () => {
           Scrapbook of Projects
         </h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {projects.map((p, idx) => (
           <ProjectCard
             key={idx}
