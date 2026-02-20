@@ -1,4 +1,4 @@
-﻿import { useCallback, useEffect, useMemo, useState } from 'react';
+﻿import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 type GitHubContributionsProps = {
   username?: string;
@@ -52,6 +52,7 @@ const GRID_START_X = 30;
 const GRID_START_Y = 30;
 const CELL_SIZE = 12;
 const CELL_GAP = 3;
+const SVG_HEIGHT = 180;
 
 const toIsoDateUtc = (date: Date): string => {
   const year = date.getUTCFullYear();
@@ -217,6 +218,7 @@ const calculateStreaks = (
 const GitHubContributions = ({
   username = 'uttam-on-git',
 }: GitHubContributionsProps) => {
+  const graphRef = useRef<HTMLDivElement | null>(null);
   const [tooltip, setTooltip] = useState<TooltipState>({
     visible: false,
     x: 0,
@@ -290,6 +292,10 @@ const GitHubContributions = ({
   }, [username]);
 
   const weeks = useMemo(() => buildWeeks(contributionDays), [contributionDays]);
+  const svgWidth = useMemo(() => {
+    const cols = Math.max(weeks.length, 52);
+    return GRID_START_X + cols * (CELL_SIZE + CELL_GAP) + 20;
+  }, [weeks.length]);
 
   const contributionCount = useMemo(() => {
     return contributionDays.reduce((sum, day) => sum + day.count, 0);
@@ -361,6 +367,13 @@ const GitHubContributions = ({
     });
   }, []);
 
+  useEffect(() => {
+    if (!graphRef.current || loading || loadError) return;
+    const container = graphRef.current;
+    // Keep latest contribution weeks in view by default.
+    container.scrollLeft = container.scrollWidth;
+  }, [loading, loadError, weeks.length]);
+
   return (
     <div className="contribution-container w-full rounded-xl border border-[var(--border)] bg-[var(--theme-card)] p-4 pt-4 overflow-hidden hover:shadow-lg transition-all duration-300">
       <style>{`
@@ -406,13 +419,16 @@ const GitHubContributions = ({
         </div>
       </div>
 
-      <div className="contribution-graph overflow-x-scroll pb-4 min-w-full scroll-smooth [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-[#0d1117] [&::-webkit-scrollbar-thumb]:bg-[#30363d] [&::-webkit-scrollbar-thumb]:rounded-full">
+      <div
+        ref={graphRef}
+        className="contribution-graph overflow-x-auto pb-4 min-w-full [&::-webkit-scrollbar]:h-2 [&::-webkit-scrollbar-track]:bg-[#0d1117] [&::-webkit-scrollbar-thumb]:bg-[#30363d] [&::-webkit-scrollbar-thumb]:rounded-full"
+      >
         <svg
-          className="w-full min-h-fit"
-          width="634"
-          height="180"
-          viewBox="0 0 634 180"
-          preserveAspectRatio="none"
+          className="block"
+          width={svgWidth}
+          height={SVG_HEIGHT}
+          viewBox={`0 0 ${svgWidth} ${SVG_HEIGHT}`}
+          preserveAspectRatio="xMinYMin meet"
         >
           <g>
             {monthLabels.map((item) => (
@@ -527,4 +543,5 @@ const GitHubContributions = ({
 };
 
 export default GitHubContributions;
+
 

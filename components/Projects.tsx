@@ -1,6 +1,12 @@
-
-import React from 'react';
-import { BarChart3, Clock, Github, Globe, MessagesSquare, Users } from 'lucide-react';
+import React from "react";
+import {
+  BarChart3,
+  Clock,
+  Github,
+  Globe,
+  MessagesSquare,
+  Users,
+} from "lucide-react";
 
 interface Project {
   title: string;
@@ -24,12 +30,14 @@ const ProjectCard: React.FC<Project & { rotate: string }> = ({
   imageAlt,
   mediaIcon,
   liveUrl,
-  codeUrl
+  codeUrl,
 }) => (
-  <div className={`project-card relative p-6 border bg-[var(--bg-card)] border-[var(--border)] shadow-sm hover:shadow-xl transition-all duration-500 ${rotate} hover:rotate-0 hover:scale-[1.04] group mb-8 transition-all duration-300`}>
+  <div
+    className={`project-card relative p-6 border bg-[var(--bg-card)] border-[var(--border)] shadow-sm hover:shadow-xl transition-all duration-500 ${rotate} hover:rotate-0 hover:scale-[1.04] group mb-8 transition-all duration-300`}
+  >
     {/* Piece of tape on corner */}
     <div className="absolute -top-3 -right-2 tape-piece rotate-12 opacity-50 group-hover:opacity-100 transition-opacity"></div>
-    
+
     <div className="project-media relative w-full aspect-video flex items-center justify-center mb-4 sketch-border bg-[var(--bg-image)] border-[var(--border)] transition-colors overflow-hidden transition-all duration-300">
       {mediaIcon ? (
         <div className="flex items-center justify-center w-full h-full">
@@ -45,11 +53,14 @@ const ProjectCard: React.FC<Project & { rotate: string }> = ({
           className="w-full h-full object-cover group-hover:scale-[1.06] transition-transform duration-500"
         />
       )}
-      
     </div>
-    
-    <h3 className="project-title font-handwriting-header text-2xl font-bold mb-2 text-[var(--text-primary)] group-hover:text-blue-600 transition-colors transition-all duration-300">{title}</h3>
-    <p className="project-desc text-sm mb-4 leading-relaxed font-sans text-[var(--text-secondary)] transition-all duration-300">{description}</p>
+
+    <h3 className="project-title font-handwriting-header text-2xl font-bold mb-2 text-[var(--text-primary)] group-hover:text-blue-600 transition-colors transition-all duration-300">
+      {title}
+    </h3>
+    <p className="project-desc text-sm mb-4 leading-relaxed font-sans text-[var(--text-secondary)] transition-all duration-300">
+      {description}
+    </p>
     <div className="flex flex-wrap gap-2 mb-4">
       {liveUrl ? (
         <a
@@ -74,10 +85,13 @@ const ProjectCard: React.FC<Project & { rotate: string }> = ({
         </a>
       ) : null}
     </div>
-    
+
     <div className="flex flex-wrap gap-2 mt-auto">
-      {tags.map(tag => (
-        <span key={tag} className="project-tag text-[10px] px-2 py-0.5 border border-[var(--border)] rounded-full font-sans tracking-wide text-[var(--text-secondary)] transition-all duration-300">
+      {tags.map((tag) => (
+        <span
+          key={tag}
+          className="project-tag text-[10px] px-2 py-0.5 border border-[var(--border)] rounded-full font-sans tracking-wide text-[var(--text-secondary)] transition-all duration-300"
+        >
           #{tag}
         </span>
       ))}
@@ -89,41 +103,21 @@ const Projects: React.FC = () => {
   const projects: Project[] = [
     {
       title: "SyncTalk",
-      description: "Real-time conversation workspace focused on fluid collaboration and instant feedback loops.",
+      description:
+        "Real-time conversation workspace focused on fluid collaboration and instant feedback loops.",
       tags: ["React", "TypeScript", "Realtime"],
       imageSrc: "/screenshots/synctalk.png",
       imageAlt: "Screenshot of SyncTalk",
       liveUrl: "https://synctalk-nine.vercel.app/",
+      codeUrl: "https://github.com/uttam-on-git/synctalk",
       icon: (
         <MessagesSquare className="w-16 h-16 text-[var(--text-secondary)] group-hover:text-blue-200 transition-colors" />
-      )
-    },
-    {
-      title: "CoBrowse Folio",
-      description: "A collaborative browsing and portfolio experience designed for shared exploration.",
-      tags: ["React", "TypeScript", "Collaboration"],
-      imageSrc: "https://image.thum.io/get/width/1200/noanimate/https://co-browse-folio.vercel.app/",
-      imageAlt: "Screenshot of CoBrowse Folio",
-      liveUrl: "https://co-browse-folio.vercel.app/",
-      icon: (
-        <Users className="w-16 h-16 text-[var(--text-secondary)] group-hover:text-blue-200 transition-colors" />
-      )
-    },
-    {
-      title: "Cesium Resource Explorer",
-      description: "A deep dive into 3D geospatial visuals. Exploring the world from the comfort of a browser.",
-      tags: ["React", "TypeScript", "CesiumJS"],
-      imageSrc: "/screenshots/cesium-resource-explorer.png",
-      imageAlt: "Screenshot of Cesium Resource Explorer",
-      liveUrl: "https://cesium-resource-explorer.vercel.app/",
-      codeUrl: "https://github.com/uttam-on-git/cesium-resource-explorer",
-      icon: (
-        <Globe className="w-16 h-16 text-[var(--text-secondary)] group-hover:text-blue-200 transition-colors" />
-      )
+      ),
     },
     {
       title: "Acta",
-      description: "Finance should be private. Acta keeps your ledger local, safe, and beautiful.",
+      description:
+        "Finance should be private. Acta keeps your ledger local, safe, and beautiful.",
       tags: ["Next.js", "Prisma", "PostgreSQL"],
       imageSrc: "/screenshots/acta.png",
       imageAlt: "Screenshot of Acta",
@@ -131,11 +125,39 @@ const Projects: React.FC = () => {
       codeUrl: "https://github.com/uttam-on-git/acta",
       icon: (
         <BarChart3 className="w-16 h-16 text-[var(--text-secondary)] group-hover:text-green-200 transition-colors" />
-      )
+      ),
+    },
+    {
+      title: "CoBrowse Folio",
+      description:
+        "A collaborative browsing and portfolio experience designed for shared exploration.",
+      tags: ["React", "TypeScript", "Collaboration"],
+      imageSrc:
+        "https://image.thum.io/get/width/1200/noanimate/https://co-browse-folio.vercel.app/",
+      imageAlt: "Screenshot of CoBrowse Folio",
+      liveUrl: "https://co-browse-folio.vercel.app/",
+      codeUrl: "https://github.com/uttam-on-git/co-browse-folio",
+      icon: (
+        <Users className="w-16 h-16 text-[var(--text-secondary)] group-hover:text-blue-200 transition-colors" />
+      ),
+    },
+    {
+      title: "Cesium Resource Explorer",
+      description:
+        "A deep dive into 3D geospatial visuals. Exploring the world from the comfort of a browser.",
+      tags: ["React", "TypeScript", "CesiumJS"],
+      imageSrc: "/screenshots/cesium-resource-explorer.png",
+      imageAlt: "Screenshot of Cesium Resource Explorer",
+      liveUrl: "https://cesium-resource-explorer.vercel.app/",
+      codeUrl: "https://github.com/uttam-on-git/cesium-resource-explorer",
+      icon: (
+        <Globe className="w-16 h-16 text-[var(--text-secondary)] group-hover:text-blue-200 transition-colors" />
+      ),
     },
     {
       title: "MindfulBrowse",
-      description: "Reclaiming the most valuable resource: attention. A gentle nudge to stay focused.",
+      description:
+        "Reclaiming the most valuable resource: attention. A gentle nudge to stay focused.",
       tags: ["JavaScript", "Chrome APIs"],
       imageSrc: "",
       imageAlt: "MindfulBrowse icon",
@@ -145,11 +167,12 @@ const Projects: React.FC = () => {
       ),
       mediaIcon: (
         <Clock className="w-24 h-24 text-[var(--text-secondary)] group-hover:text-yellow-200 transition-colors" />
-      )
+      ),
     },
     {
       title: "More Projects",
-      description: "Explore my full GitHub for more builds, experiments, and work-in-progress.",
+      description:
+        "Explore my full GitHub for more builds, experiments, and work-in-progress.",
       tags: ["GitHub", "Open Source", "Side Projects"],
       imageSrc: "",
       imageAlt: "GitHub projects",
@@ -159,8 +182,8 @@ const Projects: React.FC = () => {
       ),
       mediaIcon: (
         <Github className="w-16 h-16 text-[var(--text-secondary)] group-hover:text-blue-200 transition-colors" />
-      )
-    }
+      ),
+    },
   ];
 
   return (
@@ -172,10 +195,10 @@ const Projects: React.FC = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {projects.map((p, idx) => (
-          <ProjectCard 
-            key={idx} 
-            {...p} 
-            rotate={idx % 2 === 0 ? '-rotate-2' : 'rotate-2'}
+          <ProjectCard
+            key={idx}
+            {...p}
+            rotate={idx % 2 === 0 ? "-rotate-2" : "rotate-2"}
           />
         ))}
       </div>
