@@ -4,6 +4,7 @@ import Header from './components/Header';
 import Intro from './components/Intro';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
+import GitHubContributions from './components/GitHubContributions';
 import Footer from './components/Footer';
 import ChatNote from './components/ChatNote';
 import { StarDoodle, ArrowDoodle, SwirlDoodle, OrbitDoodle } from './components/Doodles';
@@ -84,6 +85,12 @@ const App: React.FC = () => {
           <div className="my-10 sketch-line opacity-20" />
           
           <Skills />
+
+          <section className="mb-12">
+            <div className="max-w-6xl mx-auto px-4 py-8">
+              <GitHubContributions username="uttam-on-git" />
+            </div>
+          </section>
 
           {/* Mobile ChatNote */}
           <div className="lg:hidden mt-12">
