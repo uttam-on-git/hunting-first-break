@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { BarChart3, Clock, Github, Globe } from 'lucide-react';
+import { BarChart3, Clock, Github, Globe, MessagesSquare, Users } from 'lucide-react';
 
 interface Project {
   title: string;
@@ -87,6 +87,28 @@ const ProjectCard: React.FC<Project & { rotate: string }> = ({
 
 const Projects: React.FC = () => {
   const projects: Project[] = [
+    {
+      title: "SyncTalk",
+      description: "Real-time conversation workspace focused on fluid collaboration and instant feedback loops.",
+      tags: ["React", "TypeScript", "Realtime"],
+      imageSrc: "/screenshots/synctalk.png",
+      imageAlt: "Screenshot of SyncTalk",
+      liveUrl: "https://synctalk-nine.vercel.app/",
+      icon: (
+        <MessagesSquare className="w-16 h-16 text-[var(--text-secondary)] group-hover:text-blue-200 transition-colors" />
+      )
+    },
+    {
+      title: "CoBrowse Folio",
+      description: "A collaborative browsing and portfolio experience designed for shared exploration.",
+      tags: ["React", "TypeScript", "Collaboration"],
+      imageSrc: "https://image.thum.io/get/width/1200/noanimate/https://co-browse-folio.vercel.app/",
+      imageAlt: "Screenshot of CoBrowse Folio",
+      liveUrl: "https://co-browse-folio.vercel.app/",
+      icon: (
+        <Users className="w-16 h-16 text-[var(--text-secondary)] group-hover:text-blue-200 transition-colors" />
+      )
+    },
     {
       title: "Cesium Resource Explorer",
       description: "A deep dive into 3D geospatial visuals. Exploring the world from the comfort of a browser.",
